@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.likebnb.hadoop</groupId>
+  <artifactId>PacketCount</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+    <build>
+       <sourceDirectory>src/test/java</sourceDirectory>
+       <plugins>
+    		<plugin>
+    			<artifactId>maven-antrun-plugin</artifactId>
+    			<executions><execution>
+    			    <phase>install</phase>
+    			    <goals><goal>run</goal></goals>
+    			    <configuration>
+    			        <tasks>
+    			            <scp file="target/${project.artifactId}-${project.version}.jar"
+    			                todir = "eva:.eva@192.168.0.170:/home/eva/hadoop/" trust="true"/>
+    			        </tasks>
+    			    </configuration>
+    			</execution></executions>
+    <dependencies>
+    	<dependency>
+    		<groupId>ant</groupId>
+    		<artifactId>ant-jsch</artifactId>
+    		<version>1.6.5</version>
+    	</dependency>
+    	<dependency>
+    		<groupId>jsch</groupId>
+    		<artifactId>jsch</artifactId>
+    		<version>0.1.29</version>
+    	</dependency>
+    </dependencies>
+    		</plugin>
+    	</plugins>
+    </build>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.apache.hadoop</groupId>
+  		<artifactId>hadoop-core</artifactId>
+  		<version>1.2.1</version>
+  	</dependency>
+  	<dependency>
+  	    <groupId>p3.hadoop</groupId>
+  	    <artifactId>p3lite</artifactId>
+  	    <version>0.8</version>
+  	</dependency>
+  </dependencies>
+</project>
